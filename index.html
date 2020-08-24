@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo-List</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="side-bar" class="side-bar">
+        <button id="close" class="close">
+          <img src="images/icon-close.svg" />
+        </button>
+        <img src="images/logo.png" alt="logo" class="logo" />
+        <div class="menu">
+          <ul>
+            <li>
+              <a class="menu-anchor">
+                <button class="selected">
+                  <img class="menu-icons" src="/images/icon-list.svg" />
+                  المهام
+                  <img class="arrow-icons" src="/images/icon-arrow-left.svg" />
+                </button>
+              </a>
+            </li>
+            <li>
+              <a class="menu-anchor">
+                <button>
+                  <img class="menu-icons" src="/images/icon-user.svg" />
+                  الأعضاء
+                  <img
+                    class="arrow-icons hide"
+                    src="/images/icon-arrow-left.svg"
+                  />
+                </button>
+              </a>
+            </li>
+            <li>
+              <a class="menu-anchor">
+                <button>
+                  <img class="menu-icons" src="/images/icon-creditcard.svg" />
+                  الدفع والفواتير
+                  <img
+                    class="arrow-icons hide"
+                    src="/images/icon-arrow-left.svg"
+                  />
+                </button>
+              </a>
+            </li>
+            <li>
+              <a class="menu-anchor">
+                <button>
+                  <img class="menu-icons" src="/images/icon-settings.svg" />
+                  إعدادات
+                  <img
+                    class="arrow-icons hide"
+                    src="/images/icon-arrow-left.svg"
+                  />
+                </button>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="info">
+          <img class="avatar" src="/images/avatar.png" alt="avatar" />
+          <div class="user">
+            <p class="user-name">محمد عبدالله</p>
+            <p class="company-name">الشركة المحدودة</p>
+          </div>
+          <a href="#">
+            <img
+              class="float-left down-arrow"
+              src="/images/icon-arrow-down-small.png"
+            />
+          </a>
+        </div>
+      </div>
+      <div id="pages" class="pages">
+        <div class="nav">
+          <div id="show-menu-container" class="float-right hide">
+            <img class="show-menu" src="/images/icon-menu.svg" />
+          </div>
+          <div class="float-left">
+            <select
+              name="filter-by-tag"
+              id="filter-by-tag"
+              class="filter-by-tag"
+            >
+              <option value="All">جميع المهام</option>
+            </select>
+            <input
+              type="text"
+              name="search"
+              id="search"
+              placeholder="بحث"
+              class="search"
+            />
+          </div>
+        </div>
+        <div id="list-container" class="list-container"></div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
