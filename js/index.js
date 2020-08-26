@@ -70,6 +70,7 @@ let data = [
   },
 ];
 let filteredTags = [];
+let draggedItem = null;
 
 // Handle filling the data in HTML elements using append function
 data.forEach((list, index) => {
@@ -79,7 +80,7 @@ data.forEach((list, index) => {
   );
   list.tasks.forEach((task, task_i) => {
     $(`#task-container${index}`).append(
-      `<div class="task">
+      `<div class="task" id="task-holder${index}${task_i}" draggable="true">
         <input
           class="checkbox-round"
           type="checkbox"
@@ -90,7 +91,8 @@ data.forEach((list, index) => {
           ><img class="check-icon" src="../images/icon-uncheck.svg"/>
           ${task.taskTitle}
           </label>
-        ${task.tag ? `<span class="tag">${task.tag}</span>` : ""}
+          ${task.tag ? `<span class="tag">${task.tag}</span>` : ""}
+          <img class="delete-icon" src="../images/icons8-trash.svg"/>
       </div>`
     );
     $(`#task${index}${task_i}`).change(function () {
@@ -98,9 +100,69 @@ data.forEach((list, index) => {
         $(this).next().find("img").attr("src", "../images/icon-check.svg");
       else $(this).next().find("img").attr("src", "../images/icon-uncheck.svg");
     });
-    if (task.tag) filteredTags.push(task.tag);
+    if (task.tag) filteredTags.push(task.tag); // push the tag to filteredTags
+
+    // make the first task in first list checked
     $(`#task00`).prop("checked", true);
-    $(`#task00`).next().find("img").attr("src", "../images/icon-check.svg");
+    $(`#task00`)
+      .next()
+      .find(".check-icon")
+      .attr("src", "../images/icon-check.svg");
+
+    //drag and drop functionality
+    const taskItem = $(`#task-holder${index}${task_i}`);
+    const listItem = $(`#task-container${index}`);
+    $(taskItem).on("dragstart", (e) => {
+      draggedItem = taskItem;
+      setTimeout(() => {
+        $(taskItem).css("display", "none");
+      }, 0);
+    });
+
+    $(taskItem).on("dragend", (e) => {
+      setTimeout(() => {
+        draggedItem.css("display", "block");
+        draggedItem = null;
+      }, 0);
+    });
+
+    $(listItem).on("dragover", (e) => {
+      e.preventDefault();
+    });
+
+    $(listItem).on("dragenter", (e) => {
+      e.preventDefault();
+      $(listItem).css("background-color", "#fbfbfb");
+    });
+
+    $(listItem).on("dragleave", (e) => {
+      $(listItem).css("background-color", "#fff");
+    });
+
+    $(listItem).on("drop", (e) => {
+      $(listItem).append(draggedItem);
+      $(listItem).css("background-color", "#fff");
+    });
+
+    //delete task
+    $(`#task-holder${index}${task_i}`).on("mouseover", (e) => {
+      $(`#task-holder${index}${task_i}`)
+        .find(".delete-icon")
+        .css("display", "block");
+
+      // delete the task when the mouse enter the task and the user click on the delete icon
+      $(`#task-holder${index}${task_i}`)
+        .find(".delete-icon")
+        .on("click", (e) => {
+          $(`#task-holder${index}${task_i}`).css("display", "none");
+        });
+    });
+
+    $(`#task-holder${index}${task_i}`).on("mouseleave", (e) => {
+      $(`#task-holder${index}${task_i}`)
+        .find(".delete-icon")
+        .css("display", "none");
+    });
   });
 });
 
@@ -120,7 +182,6 @@ $("#search").keyup(function () {
   filter = search.val().toUpperCase();
   listContainer = $("#list-container");
   taskContainer = listContainer.find("div.task");
-  console.log(taskContainer);
 
   // Loop through all list items, and hide those who don't match the search query
   for (i = 0; i < taskContainer.length; i++) {

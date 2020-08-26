@@ -19,6 +19,7 @@ html {
 /* --------- Side-Bar Style --------- */
 .side-bar {
   position: relative;
+  min-height: 100vh;
   height: auto;
   width: 20%;
   float: right;
@@ -189,6 +190,7 @@ ul {
 
 /* --------- Pages Style --------- */
 .pages {
+  min-height: 100vh;
   width: 80%;
   float: left;
   background-color: #f9f9f9;
@@ -242,25 +244,13 @@ input[type="checkbox"] {
   appearance: none;
 }
 
-.checkbox-round:checked {
-  background-color: #01e353;
-  border: none;
-  -webkit-transform: translate(0deg);
-  -moz-transform: translate(0deg);
-  -ms-transform: translate(0deg);
-  transform: rotate(0deg);
-}
-
-.checkbox-round:checked:after {
-  content: "\2713";
-  color: #fff;
-  position: absolute;
-  left: 30%;
-  top: 15%;
-  -webkit-transform: translate(0deg);
-  -moz-transform: translate(0deg);
-  -ms-transform: translate(0deg);
-  transform: rotate(0deg);
+.delete-icon {
+  display: none;
+  float: left;
+  vertical-align: middle;
+  cursor: pointer;
+  padding: 0.8%;
+  margin-left: 0.8%;
 }
 
 .task-label {
@@ -278,9 +268,118 @@ input[type="checkbox"]:checked + label {
   float: left;
   background-color: #e0e0e0;
   border-radius: 100%;
-  padding: 8px;
+  padding: 0.8%;
   font-family: Dubai-Regular;
   font-size: 13px;
+  vertical-align: middle;
 }
 
 /* --------------------------- */
+
+/* --------- Media Style To Make The App work On Many Screen Sizes  --------- */
+@media only screen and (max-width: 600px) {
+  .side-bar {
+    width: 100px;
+  }
+  .logo {
+    height: 22px;
+    width: 63px;
+    margin-top: 8px;
+  }
+  .close {
+    top: 0.4%;
+    left: 0.8%;
+    cursor: pointer;
+  }
+
+  .user {
+    display: none;
+  }
+  .down-arrow {
+    padding: 32px 2px 32px 8px;
+  }
+  .menu-anchor > button > span {
+    display: none;
+  }
+
+  .search {
+    width: 125px;
+    font-size: 12px;
+  }
+
+  .filter-by-tag {
+    width: 100px;
+    font-size: 12px;
+    padding-right: 8px;
+  }
+
+  .list-title {
+    font-size: 16px;
+  }
+
+  .check-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .delete-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .task-label {
+    font-family: Dubai-Regular;
+    font-size: 14px;
+    color: #666;
+  }
+
+  .tag {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 900px) and (min-width: 501px) {
+  .side-bar {
+    width: 200px;
+  }
+
+  .close {
+    top: 0.4%;
+    left: 0.8%;
+    cursor: pointer;
+  }
+
+  .menu-anchor button span {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 667px) and (min-width: 501px) {
+  .search {
+    width: 110px;
+    font-size: 12px;
+  }
+
+  .filter-by-tag {
+    width: 90px;
+    font-size: 12px;
+    padding-right: 8px;
+  }
+}
+
+@media only screen and (max-width: 374px) {
+  .search {
+    width: 110px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .search {
+    width: 85px;
+  }
+  .filter-by-tag {
+    width: 85px;
+    background-position-x: 5px;
+    background-position-y: 50%;
+  }
+}
