@@ -276,7 +276,7 @@ input[type="checkbox"]:checked + label {
 
 /* --------------------------- */
 
-/* --------- Media Style To Make The App work On Many Screen Sizes  --------- */
+/* --------- Media Style To Make The App work On Many Screen Sizes --------- */
 @media only screen and (max-width: 600px) {
   .side-bar {
     width: 100px;
