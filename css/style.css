@@ -172,7 +172,7 @@ ul {
   -webkit-appearance: none;
   -moz-appearance: none;
   background: transparent;
-  background-image: url(/images/icon-arrow-down-small-dark.svg);
+  background-image: url(../images/icon-arrow-down-small-dark.svg);
   background-repeat: no-repeat;
   background-position-x: 15px;
   background-position-y: 50%;

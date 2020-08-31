@@ -88,17 +88,17 @@ data.forEach((list, index) => {
           id="task${index}${task_i}"
         />
         <label class="task-label" for="task${index}${task_i}"
-          ><img class="check-icon" src="../images/icon-uncheck.svg"/>
+          ><img class="check-icon" src="images/icon-uncheck.svg"/>
           ${task.taskTitle}
           </label>
           ${task.tag ? `<span class="tag">${task.tag}</span>` : ""}
-          <img class="delete-icon" src="../images/icons8-trash.svg"/>
+          <img class="delete-icon" src="images/icons8-trash.svg"/>
       </div>`
     );
     $(`#task${index}${task_i}`).change(function () {
       if ($(this).is(":checked"))
-        $(this).next().find("img").attr("src", "../images/icon-check.svg");
-      else $(this).next().find("img").attr("src", "../images/icon-uncheck.svg");
+        $(this).next().find("img").attr("src", "images/icon-check.svg");
+      else $(this).next().find("img").attr("src", "images/icon-uncheck.svg");
     });
     if (task.tag) filteredTags.push(task.tag); // push the tag to filteredTags
 
@@ -107,7 +107,7 @@ data.forEach((list, index) => {
     $(`#task00`)
       .next()
       .find(".check-icon")
-      .attr("src", "../images/icon-check.svg");
+      .attr("src", "images/icon-check.svg");
 
     //drag and drop functionality
     const taskItem = $(`#task-holder${index}${task_i}`);
